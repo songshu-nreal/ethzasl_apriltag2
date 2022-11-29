@@ -4,6 +4,12 @@ project(ethzasl_apriltag2)
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
+if(ANDROID_NREAL)
+  catkin_simple()
+else()
+  catkin_simple(ALL_DEPS_REQUIRED)
+endif()
+
 add_definitions("-fPIC -O3")
 find_package(Threads)
 
@@ -27,7 +33,7 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${CMAKE_THREAD_LIBS_IN
 ############
 # EXAMPLES #
 ############
-if(NOT APPLE)
+if(NOT APPLE OR NREAL)
   cs_add_executable(apriltags_demo 
     src/example/apriltags_demo.cpp src/example/Serial.cpp
   )
