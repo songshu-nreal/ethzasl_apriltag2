@@ -33,7 +33,7 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${CMAKE_THREAD_LIBS_IN
 ############
 # EXAMPLES #
 ############
-if(NOT APPLE OR NREAL)
+if(NOT APPLE OR ANDROID_NREAL)
   cs_add_executable(apriltags_demo 
     src/example/apriltags_demo.cpp src/example/Serial.cpp
   )
